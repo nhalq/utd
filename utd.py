@@ -60,6 +60,10 @@ if __name__ == "__main__":
 
     if num_updates:
         print("We have", num_updates, "update(s)")
-        records = new_records[:num_updates] + records
+        update_records = new_records[:num_updates]
+        for record in update_records:
+            print("-", record["title"])
+
+        records = update_records + records
         with open(fn, "w") as fs:
             json.dump(records, fs, indent=2)
